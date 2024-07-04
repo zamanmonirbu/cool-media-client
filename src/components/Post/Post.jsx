@@ -20,7 +20,6 @@ const Post = ({ data }) => {
     const fetchUser = async () => {
       try {
         const res = await axios.get(`/user/${data.userId}`);
-        console.log(res.data);
         setPostUser(res.data);
       } catch (err) {
         console.error(err);
@@ -28,6 +27,9 @@ const Post = ({ data }) => {
     };
     fetchUser();
   }, [data.userId]);
+
+  // console.log(postUser?.firstname);
+
 
   const handleLike = () => {
     likePost(data._id, user._id);
@@ -39,14 +41,14 @@ const Post = ({ data }) => {
     
     <div className="Post">
       <div className="detail">
-        {postUser && (
+        {postUser? (
           <b>
             <Link to={`/profile/${postUser._id}`}>
               {postUser.firstname} {postUser.lastname}
             </Link>
-            <span> {format(data.createdAt)}</span>
+            <span> {format(postUser.createdAt)}</span>
           </b>
-        )}
+        ):""}
         <p>{data.desc}</p>
       </div>
       <img

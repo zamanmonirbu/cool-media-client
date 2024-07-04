@@ -82,7 +82,7 @@ useEffect(()=> {
     setMessages([...messages, receivedMessage]);
   }
 
-},[receivedMessage])
+},[receivedMessage,chat._id,messages])
 
 
 

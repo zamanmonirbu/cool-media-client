@@ -20,6 +20,7 @@ const Post = ({ data }) => {
     const fetchUser = async () => {
       try {
         const res = await axios.get(`/user/${data.userId}`);
+        console.log(res.data);
         setPostUser(res.data);
       } catch (err) {
         console.error(err);

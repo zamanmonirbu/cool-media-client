@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./RightSide.css";
 
-import TrendCard from "../TrendCard/TrendCard";
+// import TrendCard from "../TrendCard/TrendCard";
 import ShareModal from "../ShareModal/ShareModal";
 import NavIcons from "../NavIcons/NavIcons";
 import Friends from '../Friends/Friends';

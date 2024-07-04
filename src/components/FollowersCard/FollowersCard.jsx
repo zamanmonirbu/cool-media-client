@@ -4,6 +4,7 @@ import FollowersModal from "../FollowersModal/FollowersModal";
 import { getAllUser } from "../../api/UserRequests";
 import User from "../User/User";
 import { useSelector } from "react-redux";
+
 const FollowersCard = ({ location }) => {
   const [modalOpened, setModalOpened] = useState(false);
   const [persons, setPersons] = useState([]);
@@ -15,9 +16,7 @@ const FollowersCard = ({ location }) => {
       setPersons(data);
     };
     fetchPersons();
-  }, []);
-
-  // console.log("All users list",persons);
+  }, []); // Ensure this array includes all dependencies if needed
 
   return (
     <div className="FollowersCard">
@@ -25,6 +24,7 @@ const FollowersCard = ({ location }) => {
 
       {persons.map((person, id) => {
         if (person._id !== user._id) return <User person={person} key={id} />;
+        return null; // Add a return null for consistency
       })}
       {!location ? (
         <span onClick={() => setModalOpened(true)}>Show more</span>

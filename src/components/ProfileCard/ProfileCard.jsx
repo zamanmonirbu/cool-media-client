@@ -1,7 +1,7 @@
 import React from "react";
 import "./ProfileCard.css";
-import Cover from "../../img/cover.jpg";
-import Profile from "../../img/profileImg.jpg";
+// import Cover from "../../img/cover.jpg";
+// import Profile from "../../img/profileImg.jpg";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 const ProfileCard = ({location}) => {

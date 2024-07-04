@@ -1,5 +1,4 @@
 import React from 'react';
-import Conversation from '../Coversation/Conversation';
 
 const Friends = () => {
     return (

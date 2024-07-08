@@ -4,6 +4,10 @@
     gap: 2rem;
 }
 
+.RightSide b{
+    text-align: center;
+    margin-top: 2rem;
+}
 
 .navIcons{
     margin-top: 1rem;

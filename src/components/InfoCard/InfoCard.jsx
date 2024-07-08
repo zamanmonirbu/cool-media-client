@@ -28,7 +28,7 @@ const InfoCard = () => {
       } else {
         // console.log("fetching")
         const profileUser = await UserApi.getUser(profileUserId);
-        setProfileUser(profileUser);
+        setProfileUser(profileUser.data);
         // console.log(profileUser)
       }
     };
@@ -77,7 +77,7 @@ const InfoCard = () => {
         <span>{profileUser.worksAt}</span>
       </div>
 
-      <button className="button logout-button" onClick={handleLogOut}>Log Out</button>
+      {user._id === profileUserId ?(<button className="button logout-button" onClick={handleLogOut}>Log Out</button>):""}  
     </div>
   );
 };

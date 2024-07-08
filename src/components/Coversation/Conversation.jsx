@@ -27,11 +27,18 @@ const Conversation = ({ data, currentUser, online }) => {
   }, [currentUser,data.members,dispatch])
   return (
     <>
+     {
+     online?
+      (  <>
       <div className="follower conversation">
         <div>
           {online && <div className="online-dot"></div>}
+         
           <img
-            src={userData?.profilePicture? process.env.REACT_APP_PUBLIC_FOLDER + userData.profilePicture : process.env.REACT_APP_PUBLIC_FOLDER + "defaultProfile.png"}
+            src={userData?.profilePicture?userData.profilePicture 
+              : "https://i.ibb.co/ryhyt7C/cute-baby-boy-profile-picture-kid-avatar-176411-4644.png"
+
+            }
             alt="Profile"
             className="followerImage"
             style={{ width: "50px", height: "50px" }}
@@ -40,9 +47,11 @@ const Conversation = ({ data, currentUser, online }) => {
             <span>{userData?.firstname} {userData?.lastname}</span>
             <span style={{color: online?"#51e200":""}}>{online? "Online" : "Offline"}</span>
           </div>
+         
         </div>
       </div>
-      <hr style={{ width: "85%", border: "0.1px solid #ececec" }} />
+      <hr style={{ width: "85%", border: "0.1px solid #ececec" }} /> </>):("")
+       }
     </>
   );
 };

@@ -3,11 +3,11 @@ import FollowersCard from '../FollowersCard/FollowersCard'
 import InfoCard from '../InfoCard/InfoCard'
 import LogoSearch from '../LogoSearch/LogoSearch'
 
-const ProfileLeft = () => {
+const ProfileLeft = ({id}) => {
   return (
     <div className="ProfileSide">
         <LogoSearch/>
-        <InfoCard/>
+        <InfoCard id={id} />
         <FollowersCard/>
     </div>
   )

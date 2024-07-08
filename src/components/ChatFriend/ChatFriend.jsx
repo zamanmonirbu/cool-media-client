@@ -1,14 +1,12 @@
 import React, { useRef, useState, useEffect } from "react";
-import ChatBox from "../../components/ChatBox/ChatBox";
-import Conversation from "../../components/Coversation/Conversation";
-import LogoSearch from "../../components/LogoSearch/LogoSearch";
-import NavIcons from "../../components/NavIcons/NavIcons";
-import "./Chat.css";
-import { userChats } from "../../api/ChatRequests";
 import { useSelector } from "react-redux";
 import { io } from "socket.io-client";
+import { userChats } from "../../api/ChatRequests";
+import Conversation from "../Coversation/Conversation";
+import "./ChatFriend.css";
 
-const Chat = () => {
+
+const ChatFriend = () => {
   const socket = useRef();
   const { user } = useSelector((state) => state.authReducer.authData);
 
@@ -62,45 +60,23 @@ const Chat = () => {
   };
 
   return (
-    <div className="Chat">
-      {/* Left Side */}
-      <div className="Left-side-chat">
-        <LogoSearch />
-        <div className="Chat-container">
-          <h2>Chats</h2>
-          <div className="Chat-list">
-            {chats.map((chat) => (
-              <div
-                key={chat._id}
-                onClick={() => {
-                  setCurrentChat(chat);
-                }}
-              >
-                <Conversation
-                  data={chat}
-                  currentUser={user._id}
-                  online={checkOnlineStatus(chat)}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>  
-
-      {/* Right Side */}
-      <div className="Right-side-chat">
-        <div style={{ width: "20rem", alignSelf: "flex-end" }}>
-          <NavIcons />
-        </div>
-        <ChatBox
-          chat={currentChat}
-          currentUser={user._id}
-          setSendMessage={setSendMessage}
-          receivedMessage={receivedMessage}
-        />
-      </div>
-    </div>
+    <>
+          {chats.map((chat) => (
+            <div
+              key={chat._id}
+              onClick={() => {
+                setCurrentChat(chat);
+              }}
+            >
+              <Conversation
+                data={chat}
+                currentUser={user._id}
+                online={checkOnlineStatus(chat)}
+              />
+            </div>
+          ))}
+           </> 
   );
 };
 
-export default Chat;
+export default ChatFriend;

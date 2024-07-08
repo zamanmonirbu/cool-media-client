@@ -3,19 +3,26 @@ import { Modal, useMantineTheme } from "@mantine/core";
 import "./ProfileModal.css";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { uploadImage } from "../../actions/UploadAction";
+import axios from 'axios';
 import { updateUser } from "../../actions/UserAction";
 
 const ProfileModal = ({ modalOpened, setModalOpened, data }) => {
   const theme = useMantineTheme();
   const { password, ...other } = data;
-  const [formData, setFormData] = useState(other);
+  const [formData, setFormData] = useState({
+    firstname: other.firstname || "",
+    lastname: other.lastname || "",
+    worksAt: other.worksAt || "",
+    livesIn: other.livesIn || "",
+    country: other.country || "",
+    relationship: other.relationship || ""
+  });
   const [profileImage, setProfileImage] = useState(null);
   const [coverImage, setCoverImage] = useState(null);
   const dispatch = useDispatch();
   const param = useParams();
 
-  // const { user } = useSelector((state) => state.authReducer.authData);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -29,34 +36,43 @@ const ProfileModal = ({ modalOpened, setModalOpened, data }) => {
     }
   };
 
-  // form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    let UserData = formData;
+    let UserData = { ...formData };
+
+    const uploadToImgBB = async (image) => {
+      const formData = new FormData();
+      formData.append('image', image);
+      const imgbbUrl = "https://api.imgbb.com/1/upload?key=13c60fa1ef34d09a7e455348d706165b";
+
+      try {
+        const response = await axios.post(imgbbUrl, formData);
+        if (response.data.success) {
+          return response.data.data.url;
+        } else {
+          console.error('Image upload failed:', response.data);
+          return null;
+        }
+      } catch (err) {
+        console.error('Error uploading image:', err);
+        return null;
+      }
+    };
+
     if (profileImage) {
-      const data = new FormData();
-      const fileName = Date.now() + profileImage.name;
-      data.append("name", fileName);
-      data.append("file", profileImage);
-      UserData.profilePicture = fileName;
-      try {
-        dispatch(uploadImage(data));
-      } catch (err) {
-        console.log(err);
+      const profileImageUrl = await uploadToImgBB(profileImage);
+      if (profileImageUrl) {
+        UserData.profilePicture = profileImageUrl;
       }
     }
+
     if (coverImage) {
-      const data = new FormData();
-      const fileName = Date.now() + coverImage.name;
-      data.append("name", fileName);
-      data.append("file", coverImage);
-      UserData.coverPicture = fileName;
-      try {
-        dispatch(uploadImage(data));
-      } catch (err) {
-        console.log(err);
+      const coverImageUrl = await uploadToImgBB(coverImage);
+      if (coverImageUrl) {
+        UserData.coverPicture = coverImageUrl;
       }
     }
+
     dispatch(updateUser(param.id, UserData));
     setModalOpened(false);
   };

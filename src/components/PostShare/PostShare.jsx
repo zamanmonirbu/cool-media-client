@@ -6,7 +6,8 @@ import { UilLocationPoint } from "@iconscout/react-unicons";
 import { UilSchedule } from "@iconscout/react-unicons";
 import { UilTimes } from "@iconscout/react-unicons";
 import { useDispatch, useSelector } from "react-redux";
-import { uploadImage, uploadPost } from "../../actions/UploadAction";
+import { uploadPost } from "../../actions/UploadAction";
+import axios from 'axios';
 
 const PostShare = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const PostShare = () => {
   const loading = useSelector((state) => state.postReducer.uploading);
   const [image, setImage] = useState(null);
   const desc = useRef();
-  const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
+  // const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
 
   // handle Image Change
   const onImageChange = (event) => {
@@ -30,7 +31,7 @@ const PostShare = () => {
   const handleUpload = async (e) => {
     e.preventDefault();
 
-    //post data
+    // post data
     const newPost = {
       userId: user._id,
       desc: desc.current.value,
@@ -38,18 +39,23 @@ const PostShare = () => {
 
     // if there is an image with post
     if (image) {
-      const data = new FormData();
-      const fileName = Date.now() + image.name;
-      data.append("name", fileName);
-      data.append("file", image);
-      newPost.image = fileName;
-      console.log(newPost);
+      const formData = new FormData();
+      formData.append('image', image);
+
+      const imgbbUrl = "https://api.imgbb.com/1/upload?key=13c60fa1ef34d09a7e455348d706165b";
+
       try {
-        dispatch(uploadImage(data));
+        const response = await axios.post(imgbbUrl, formData);
+        if (response.data.success) {
+          newPost.image = response.data.data.url;
+        } else {
+          console.error('Image upload failed:', response.data);
+        }
       } catch (err) {
-        console.log(err);
+        console.error('Error uploading image:', err);
       }
     }
+
     dispatch(uploadPost(newPost));
     resetShare();
   };
@@ -59,16 +65,18 @@ const PostShare = () => {
     setImage(null);
     desc.current.value = "";
   };
+// console.log("Check user profile",user);
   return (
     <div className="PostShare">
-      <img
-        src={
-          user.profilePicture
-            ? serverPublic + user.profilePicture
-            : serverPublic + "defaultProfile.png"
-        }
-        alt="Profile"
-      />
+     <img
+  src={
+    user.profilePicture
+      ? user.profilePicture
+      : "https://i.ibb.co/ryhyt7C/cute-baby-boy-profile-picture-kid-avatar-176411-4644.png"
+  }
+  alt="Profile"
+/>
+
       <div>
         <input
           type="text"
@@ -96,14 +104,14 @@ const PostShare = () => {
           </div>
           <div className="option" style={{ color: "var(--shedule)" }}>
             <UilSchedule />
-            Shedule
+            Schedule
           </div>
           <button
             className="button ps-button"
             onClick={handleUpload}
             disabled={loading}
           >
-            {loading ? "uploading" : "Share"}
+            {loading ? "Uploading..." : "Share"}
           </button>
 
           <div style={{ display: "none" }}>

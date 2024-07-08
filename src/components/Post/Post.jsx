@@ -7,8 +7,8 @@ import NotLike from "../../img/notlike.png";
 import { likePost } from "../../api/PostsRequests";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { format } from "timeago.js";
+import { getUser } from "../../api/UserRequests";
 
 const Post = ({ data }) => {
   const { user } = useSelector((state) => state.authReducer.authData);
@@ -19,7 +19,7 @@ const Post = ({ data }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get(`/user/${data.userId}`);
+        const res = await getUser(data.userId)
         setPostUser(res.data);
       } catch (err) {
         console.error(err);
@@ -28,31 +28,37 @@ const Post = ({ data }) => {
     fetchUser();
   }, [data.userId]);
 
-  // console.log(postUser?.firstname);
-
-
   const handleLike = () => {
     likePost(data._id, user._id);
     setLiked((prev) => !prev);
     liked ? setLikes((prev) => prev - 1) : setLikes((prev) => prev + 1);
   };
 
-  return (
-    
+  // console.log(postUser);
+
+  return (   
     <div className="Post">
       <div className="detail">
-        {postUser? (
-          <b>
-            <Link to={`/profile/${postUser._id}`}>
+      {postUser ? (
+        <b>
+          <Link to={`/profile/${postUser._id}`} className="user-link">
+            <img src={postUser.profilePicture} alt="user_photo" className="user-photo" />
+            <span className="user-name">
               {postUser.firstname} {postUser.lastname}
-            </Link>
-            <span> {format(postUser.createdAt)}</span>
-          </b>
-        ):""}
-        <p>{data.desc}</p>
-      </div>
+            </span>
+            {/* {format(postUser.createdAt)} */}
+            <span className="timeago"> {format(postUser.createdAt)}</span>
+
+          </Link>
+          {/* <span className="timeago"> {format(postUser.createdAt)}</span> */}
+        </b>
+      ) : (
+        ""
+      )}
+      <p>{data.desc}</p>
+    </div>
       <img
-        src={data.image ? process.env.REACT_APP_PUBLIC_FOLDER + data.image : ""}
+        src={data.image ? data.image : ""}
         alt=""
       />
 

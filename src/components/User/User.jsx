@@ -4,7 +4,6 @@ import { followUser, unfollowUser } from "../../actions/UserAction";
 import { Link } from "react-router-dom";
 const User = ({ person }) => {
   // console.log(person);
-  const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   const { user } = useSelector((state) => state.authReducer.authData);
   const dispatch = useDispatch()
   
@@ -22,10 +21,10 @@ const User = ({ person }) => {
       <div>
         <img
           src={
-            publicFolder + person.profilePicture
-              ? publicFolder + person.profilePicture
-              : publicFolder + "defaultProfile.png"
-          }
+             person.profilePicture
+              ?  person.profilePicture
+              : "https://i.ibb.co/ryhyt7C/cute-baby-boy-profile-picture-kid-avatar-176411-4644.png"
+            }
           alt="profile"
           className="followerImage"
         />

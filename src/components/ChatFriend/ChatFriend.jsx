@@ -12,9 +12,9 @@ const ChatFriend = () => {
 
   const [chats, setChats] = useState([]);
   const [onlineUsers, setOnlineUsers] = useState([]);
-  const [currentChat, setCurrentChat] = useState(null);
+  const [ setCurrentChat] = useState(null);
   const [sendMessage, setSendMessage] = useState(null);
-  const [receivedMessage, setReceivedMessage] = useState(null);
+  const [setReceivedMessage] = useState(null);
 
   // Get the chat in chat section
   useEffect(() => {

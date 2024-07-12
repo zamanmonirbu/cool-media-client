@@ -13,7 +13,7 @@ function App() {
       className="App"
       style={{
         height:
-          window.location.href === "https://cool-media-fronend.netlify.app"
+          window.location.href === "https://cool-media-client.vercel.app"
             ? "calc(100vh - 2rem)"
             : "auto",
       }}

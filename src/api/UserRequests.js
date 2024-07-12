@@ -1,7 +1,7 @@
 // src/api/UserAPI.js
 import axios from 'axios';
 
-export const API = axios.create({ baseURL: 'https://cool-media-backend.vercel.app' });
+export const API = axios.create({ baseURL: 'https://cool-media-backend.onrender.com' });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {

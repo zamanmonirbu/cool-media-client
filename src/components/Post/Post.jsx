@@ -10,9 +10,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { format } from "timeago.js";
 import { getUser } from "../../api/UserRequests";
-import CommentMain from "../CommentMain/CommentMain";
-// import CommentMain from "../Comment/CommentMain";
-// CommentMain
+import CommentMain from "../Comment/Comment";
 
 const Post = ({ data }) => {
   const { user } = useSelector((state) => state.authReducer.authData);
@@ -25,11 +23,11 @@ const Post = ({ data }) => {
   const [editedDesc, setEditedDesc] = useState(data.desc);
 
   useEffect(() => {
-    let isMounted = true; // Add a flag to check if the component is mounted
+    let isMounted = true; 
     const fetchUser = async () => {
       try {
         const res = await getUser(data.userId);
-        if (isMounted) { // Only update state if the component is still mounted
+        if (isMounted) { 
           setPostUser(res.data);
         }
       } catch (err) {
@@ -38,7 +36,7 @@ const Post = ({ data }) => {
     };
     fetchUser();
     return () => {
-      isMounted = false; // Cleanup function to set the flag to false when the component unmounts
+      isMounted = false; 
     };
   }, [data.userId]);
 
@@ -51,9 +49,8 @@ const Post = ({ data }) => {
   const handleDelete = async () => {
     try {
       await deletePost(data._id, user._id);
-      window.location.reload(); // Reload the page after deleting the post
+      window.location.reload(); 
 
-      // Optionally, refresh posts or handle the post deletion in the parent component
     } catch (err) {
       console.error(err);
     }
@@ -64,8 +61,6 @@ const Post = ({ data }) => {
       console.log(data._id, { desc: editedDesc,userId:user._id });
       await updatePost(data._id, { desc: editedDesc,userId:user._id });
       setShowEditModal(false);
-      // window.location.reload(); // Reload the page after deleting the post
-      // Optionally, refresh posts or handle the post update in the parent component
     } catch (err) {
       console.error(err);
     }

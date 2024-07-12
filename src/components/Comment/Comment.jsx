@@ -2,14 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { commentPost, getComments } from '../../api/PostsRequests';
 import { Link } from 'react-router-dom';
-import './CommentMain.css';
+import './Comment.css';
 
-const CommentMain = ({ postId }) => {
+const Comment = ({ postId }) => {
   const { user } = useSelector((state) => state.authReducer.authData);
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
-  
-//   const { user } = useSelector((state) => state.authReducer.authData);
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -35,7 +33,7 @@ const CommentMain = ({ postId }) => {
       console.error(error);
     }
   };
-// console.log(user);
+
   return (
     <div className="comment-section">
       <form onSubmit={handleCommentSubmit} key={user?._id}>
@@ -60,4 +58,4 @@ const CommentMain = ({ postId }) => {
   );
 };
 
-export default CommentMain;
+export default Comment;

@@ -48,7 +48,6 @@ const Auth = () => {
     }
   };
 
-  // console.log(error)
 
   return (
     <div className="Auth">

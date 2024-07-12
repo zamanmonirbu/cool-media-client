@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 
-const API = axios.create({ baseURL: 'https://cool-media-backend.onrender.com' });
+const API = axios.create({ baseURL: 'https://cool-media-backend.vercel.app' });
 
 export const getMessages = (id) => API.get(`/message/${id}`);
 

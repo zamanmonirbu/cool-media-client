@@ -1,4 +1,3 @@
-// src/reducers/userReducer.js
 const initialState = {
     searchResults: [],
     loading: false,
@@ -25,7 +24,6 @@ const initialState = {
           error: action.payload,
           loading: false,
         };
-      // Add other cases for follow, unfollow, update user, etc.
       default:
         return state;
     }

@@ -1,28 +1,3 @@
-/* .comment-section{
-    margin: 2rem 4rem;
-}
-
-.inputComment{
-    padding: 1rem .5rem;
-    border-radius: .5rem;
-}
-
-button{
-    margin-left: 1rem;
-    padding: .6rem;
-    background-color: #469BE7;
-    border: none;
-    border-radius: .6rem;
-    cursor: pointer;
-}
-
-Link{
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: black;
-} */
-
 .comment-section {
     margin-top: 20px;
   }
@@ -57,8 +32,6 @@ Link{
   .comment {
     padding: 10px;
     border-bottom: 1px solid #ddd;
-    /* width: 50%; */
-
   }
   
   .comment p {

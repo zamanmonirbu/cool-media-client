@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getUser } from "../../api/UserRequests";
-const Conversation = ({ data, currentUser, online }) => {
+const ConversationActiveUser = ({ data, currentUser, online }) => {
 
   const [userData, setUserData] = useState(null)
   const dispatch = useDispatch()
@@ -30,6 +30,9 @@ const Conversation = ({ data, currentUser, online }) => {
 
   return (
     <>
+     {
+     online?
+      (  <>
       <div className="follower conversation">
         <div>
           {online && <div className="online-dot"></div>}
@@ -50,10 +53,10 @@ const Conversation = ({ data, currentUser, online }) => {
          
         </div>
       </div>
-      <hr style={{ width: "85%", border: "0.1px solid #ececec" }} />
-      </>
-      
+      <hr style={{ width: "85%", border: "0.1px solid #ececec" }} /> </>):("")
+       }
+    </>
   );
 };
 
-export default Conversation;
+export default ConversationActiveUser;

@@ -1,0 +1,29 @@
+.time-share {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  max-width: 300px;
+  margin: 0 auto;
+  background: #f9f9f9;
+}
+
+.time-share h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.time-picker {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.time-picker label {
+  margin-bottom: 5px;
+}
+
+.selected-time {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+}

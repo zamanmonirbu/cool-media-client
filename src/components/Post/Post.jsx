@@ -4,28 +4,42 @@ import Comment from "../../img/comment.png";
 import Share from "../../img/share.png";
 import Heart from "../../img/like.png";
 import NotLike from "../../img/notlike.png";
-import { likePost } from "../../api/PostsRequests";
+import ThreeDot from "../../img/options.png"; 
+import { likePost, deletePost, updatePost } from "../../api/PostsRequests";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { format } from "timeago.js";
 import { getUser } from "../../api/UserRequests";
+import CommentMain from "../CommentMain/CommentMain";
+// import CommentMain from "../Comment/CommentMain";
+// CommentMain
 
 const Post = ({ data }) => {
   const { user } = useSelector((state) => state.authReducer.authData);
   const [liked, setLiked] = useState(data.likes.includes(user._id));
   const [likes, setLikes] = useState(data.likes.length);
-  const [postUser, setPostUser] = useState(null); 
+  const [postUser, setPostUser] = useState(null);
+  const [comment, setComment] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editedDesc, setEditedDesc] = useState(data.desc);
 
   useEffect(() => {
+    let isMounted = true; // Add a flag to check if the component is mounted
     const fetchUser = async () => {
       try {
-        const res = await getUser(data.userId)
-        setPostUser(res.data);
+        const res = await getUser(data.userId);
+        if (isMounted) { // Only update state if the component is still mounted
+          setPostUser(res.data);
+        }
       } catch (err) {
         console.error(err);
       }
     };
     fetchUser();
+    return () => {
+      isMounted = false; // Cleanup function to set the flag to false when the component unmounts
+    };
   }, [data.userId]);
 
   const handleLike = () => {
@@ -34,30 +48,59 @@ const Post = ({ data }) => {
     liked ? setLikes((prev) => prev - 1) : setLikes((prev) => prev + 1);
   };
 
-  // console.log(postUser);
+  const handleDelete = async () => {
+    try {
+      await deletePost(data._id, user._id);
+      window.location.reload(); // Reload the page after deleting the post
 
-  return (   
+      // Optionally, refresh posts or handle the post deletion in the parent component
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleEdit = async () => {
+    try {
+      console.log(data._id, { desc: editedDesc,userId:user._id });
+      await updatePost(data._id, { desc: editedDesc,userId:user._id });
+      setShowEditModal(false);
+      // window.location.reload(); // Reload the page after deleting the post
+      // Optionally, refresh posts or handle the post update in the parent component
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  return (
     <div className="Post">
       <div className="detail">
-      {postUser ? (
-        <b>
-          <Link to={`/profile/${postUser._id}`} className="user-link">
-            <img src={postUser.profilePicture} alt="user_photo" className="user-photo" />
-            <span className="user-name">
-              {postUser.firstname} {postUser.lastname}
-            </span>
-            {/* {format(postUser.createdAt)} */}
-            <span className="timeago"> {format(postUser.createdAt)}</span>
-
-          </Link>
-          {/* <span className="timeago"> {format(postUser.createdAt)}</span> */}
-        </b>
-      ) : (
-        ""
-      )}
-      <p>{data.desc}</p>
-    </div>
-      <img
+        {postUser ? (
+          <b>
+            <Link to={`/profile/${postUser._id}`} className="user-link">
+              <img src={postUser.profilePicture} alt="user_photo" className="user-photo" />
+              <span className="user-name">
+                {postUser.firstname} {postUser.lastname}
+              </span>
+              <span className="timeago"> {format(postUser.createdAt)}</span>
+            </Link>
+          </b>
+        ) : (
+          ""
+        )}
+        {user._id === data.userId && (
+          <div className="menu-container">
+            <img src={ThreeDot} alt="menu" className="three-dot-menu" onClick={() => setShowMenu(!showMenu)} />
+            {showMenu && (
+              <div className="menu should-under">
+                <div className="menu-item" onClick={() => setShowEditModal(true)}>Edit</div>
+                <div className="menu-item" onClick={handleDelete}>Delete</div>
+              </div>
+            )}
+          </div>
+        )}
+        <p>{data.desc}</p>
+      </div>
+      <img className="postImage"
         src={data.image ? data.image : ""}
         alt=""
       />
@@ -69,13 +112,27 @@ const Post = ({ data }) => {
           style={{ cursor: "pointer" }}
           onClick={handleLike}
         />
-        <img src={Comment} alt="" />
+        <img src={Comment} alt="" onClick={() => setComment(true)} style={{ cursor:"pointer" }} />
         <img src={Share} alt="" />
       </div>
 
       <span style={{ color: "var(--gray)", fontSize: "12px" }}>
-        {likes} likes
+        {likes} likes {comment && <CommentMain postId={data._id} />}
+
       </span>
+
+
+      {showEditModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={() => setShowEditModal(false)}>&times;</span>
+            <h2>Edit Post</h2>
+            <textarea value={editedDesc} onChange={(e) => setEditedDesc(e.target.value)} />
+            <button onClick={handleEdit}>Save</button>
+            <button className="cancel" onClick={() => setShowEditModal(false)}>Cancel</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

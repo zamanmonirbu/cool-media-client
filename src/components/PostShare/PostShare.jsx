@@ -1,23 +1,21 @@
 import React, { useState, useRef } from "react";
 import "./PostShare.css";
-import { UilScenery } from "@iconscout/react-unicons";
-import { UilPlayCircle } from "@iconscout/react-unicons";
-import { UilLocationPoint } from "@iconscout/react-unicons";
-import { UilSchedule } from "@iconscout/react-unicons";
-import { UilTimes } from "@iconscout/react-unicons";
+import { UilScenery, UilPlayCircle, UilLocationPoint, UilSchedule, UilTimes } from "@iconscout/react-unicons";
 import { useDispatch, useSelector } from "react-redux";
 import { uploadPost } from "../../actions/UploadAction";
 import axios from 'axios';
+import Location from "../Location/Location";
+import StyledCalendar from "../TimeShare/TimeShare";
 
 const PostShare = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.authReducer.authData);
   const loading = useSelector((state) => state.postReducer.uploading);
   const [image, setImage] = useState(null);
+  const [locationShare, setLocationShare] = useState(false);
+  const [timeShare, setTimeShare] = useState(false);
   const desc = useRef();
-  // const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
 
-  // handle Image Change
   const onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
       let img = event.target.files[0];
@@ -26,18 +24,13 @@ const PostShare = () => {
   };
 
   const imageRef = useRef();
-
-  // handle post upload
   const handleUpload = async (e) => {
     e.preventDefault();
-
-    // post data
     const newPost = {
       userId: user._id,
       desc: desc.current.value,
     };
 
-    // if there is an image with post
     if (image) {
       const formData = new FormData();
       formData.append('image', image);
@@ -60,22 +53,19 @@ const PostShare = () => {
     resetShare();
   };
 
-  // Reset Post Share
   const resetShare = () => {
     setImage(null);
     desc.current.value = "";
+    setLocationShare(false);
+    setTimeShare(false);
   };
-// console.log("Check user profile",user);
+
   return (
     <div className="PostShare">
-     <img
-  src={
-    user.profilePicture
-      ? user.profilePicture
-      : "https://i.ibb.co/ryhyt7C/cute-baby-boy-profile-picture-kid-avatar-176411-4644.png"
-  }
-  alt="Profile"
-/>
+      <img
+        src={user.profilePicture ? user.profilePicture : "https://i.ibb.co/ryhyt7C/cute-baby-boy-profile-picture-kid-avatar-176411-4644.png"}
+        alt="Profile"
+      />
 
       <div>
         <input
@@ -94,15 +84,18 @@ const PostShare = () => {
             Photo
           </div>
 
-          <div className="option" style={{ color: "var(--video)" }}>
+          <div className="option" style={{ color: "var(--video)" }}
+            onClick={() => imageRef.current.click()}
+          >
             <UilPlayCircle />
             Video
           </div>
-          <div className="option" style={{ color: "var(--location)" }}>
+          <div className="option" style={{ color: "var(--location)" }} onClick={() => setLocationShare(!locationShare)}>
             <UilLocationPoint />
             Location
           </div>
-          <div className="option" style={{ color: "var(--shedule)" }}>
+
+          <div className="option" style={{ color: "var(--schedule)" }} onClick={() => setTimeShare(!timeShare)}>
             <UilSchedule />
             Schedule
           </div>
@@ -125,6 +118,9 @@ const PostShare = () => {
             <img src={URL.createObjectURL(image)} alt="preview" />
           </div>
         )}
+
+        {locationShare && <Location />}
+        {timeShare && <StyledCalendar />}
       </div>
     </div>
   );

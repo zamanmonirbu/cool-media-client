@@ -13,7 +13,7 @@ function App() {
       className="App"
       style={{
         height:
-          window.location.href === "https://cool-media-client.vercel.app"
+          window.location.href === "http://localhost:3000"
             ? "calc(100vh - 2rem)"
             : "auto",
       }}

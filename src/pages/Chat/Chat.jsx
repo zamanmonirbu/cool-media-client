@@ -20,25 +20,35 @@ const Chat = () => {
 
   // Get the chat in chat section
   useEffect(() => {
+    let isMounted = true;
     const getChats = async () => {
       try {
         const { data } = await userChats(user._id);
-        setChats(data);
+        if (isMounted) {
+          setChats(data);
+        }
       } catch (error) {
         console.log(error);
       }
     };
     getChats();
+    return () => {
+      isMounted = false;
+    };
   }, [user._id]);
 
   // Connect to Socket.io
   useEffect(() => {
-    socket.current = io("https://cool-media-socket.onrender.com");
+    socket.current = io("http://localhost:8800");
     socket.current.emit("new-user-add", user._id);
     socket.current.on("get-users", (users) => {
       setOnlineUsers(users);
     });
-  }, [user]);
+
+    return () => {
+      socket.current.disconnect();
+    };
+  }, [user._id]);
 
   // Send Message to socket server
   useEffect(() => {
@@ -49,10 +59,15 @@ const Chat = () => {
 
   // Get the message from socket server
   useEffect(() => {
-    socket.current.on("recieve-message", (data) => {
-      console.log(data);
+    const handleReceiveMessage = (data) => {
       setReceivedMessage(data);
-    });
+    };
+
+    socket.current.on("recieve-message", handleReceiveMessage);
+
+    return () => {
+      socket.current.off("recieve-message", handleReceiveMessage);
+    };
   }, []);
 
   const checkOnlineStatus = (chat) => {
@@ -61,6 +76,7 @@ const Chat = () => {
     return online ? true : false;
   };
 
+  // console.log(chats,sendMessage,receivedMessage,currentChat,onlineUsers);
   return (
     <div className="Chat">
       {/* Left Side */}
@@ -85,7 +101,7 @@ const Chat = () => {
             ))}
           </div>
         </div>
-      </div>  
+      </div>
 
       {/* Right Side */}
       <div className="Right-side-chat">

@@ -1,13 +1,14 @@
 import * as AuthApi from "../api/AuthRequests";
+
 export const logIn = (formData, navigate) => async (dispatch) => {
   dispatch({ type: "AUTH_START" });
   try {
     const { data } = await AuthApi.logIn(formData);
-    dispatch({ type: "AUTH_SUCCESS", data: data });
+    dispatch({ type: "AUTH_SUCCESS", data });
     navigate("../home", { replace: true });
   } catch (error) {
-    console.log(error);
-    dispatch({ type: "AUTH_FAIL" });
+    console.log("error Data",error.response.data);
+    dispatch({ type: "AUTH_FAIL", error: error.response.data });
   }
 };
 
@@ -15,15 +16,14 @@ export const signUp = (formData, navigate) => async (dispatch) => {
   dispatch({ type: "AUTH_START" });
   try {
     const { data } = await AuthApi.signUp(formData);
-    dispatch({ type: "AUTH_SUCCESS", data: data });
+    dispatch({ type: "AUTH_SUCCESS", data });
     navigate("../home", { replace: true });
   } catch (error) {
     console.log(error);
-    dispatch({ type: "AUTH_FAIL" });
+    dispatch({ type: "AUTH_FAIL", error: error.response.data });
   }
 };
 
-
-export const logout = ()=> async(dispatch)=> {
-  dispatch({type: "LOG_OUT"})
-}
+export const logout = () => async (dispatch) => {
+  dispatch({ type: "LOG_OUT" });
+};

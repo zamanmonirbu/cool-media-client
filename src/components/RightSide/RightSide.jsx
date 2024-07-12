@@ -4,7 +4,7 @@ import "./RightSide.css";
 // import TrendCard from "../TrendCard/TrendCard";
 import ShareModal from "../ShareModal/ShareModal";
 import NavIcons from "../NavIcons/NavIcons";
-import ChatFriend from "../ChatFriend/ChatFriend";
+import ActiveFriend from "../ActiveFriends/ActiveFriends";
 const RightSide = () => {
   const [modalOpened, setModalOpened] = useState(false);
 
@@ -12,7 +12,7 @@ const RightSide = () => {
     <div className="RightSide">
       <NavIcons />
       <b>      Active friend list...</b>
-      <ChatFriend/>
+      <ActiveFriend/>
       <button className="button r-button" onClick={() => setModalOpened(true)}>
         Share
       </button>

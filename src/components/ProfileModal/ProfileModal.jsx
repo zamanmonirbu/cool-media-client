@@ -77,6 +77,8 @@ const ProfileModal = ({ modalOpened, setModalOpened, data }) => {
     setModalOpened(false);
   };
 
+  // console.log(formData,profileImage,coverImage);
+
   return (
     <Modal
       overlayColor={

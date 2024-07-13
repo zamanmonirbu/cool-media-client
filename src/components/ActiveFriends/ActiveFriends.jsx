@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { io } from "socket.io-client";
 import { userChats } from "../../api/ChatRequests";
-import "./ChatFriend.css";
 import ConversationActiveUser from "./ConversationActiveUser";
 
 const ActiveFriend = () => {
@@ -34,7 +33,7 @@ const ActiveFriend = () => {
 
   // Connect to Socket.io
   useEffect(() => {
-    socket.current = io("http://localhost:8800");
+    socket.current = io("https://cool-media-socket.onrender.com");
     socket.current.emit("new-user-add", user._id);
     socket.current.on("get-users", (users) => {
       setOnlineUsers(users);

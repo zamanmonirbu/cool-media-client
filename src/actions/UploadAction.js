@@ -9,7 +9,6 @@ export const uploadImage = (data) => async (dispatch) => {
 };
 
 export const uploadPost = (data) => async (dispatch) => {
-  // console.log("From upload",data);
   dispatch({ type: "UPLOAD_START" });
   try {
     const newPost =await UploadApi.uploadPost(data);

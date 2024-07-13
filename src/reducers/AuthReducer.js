@@ -10,12 +10,14 @@ const authReducer = (state = initialState, action) => {
     case "AUTH_START":
       return { ...state, loading: true, error: null };
     case "AUTH_SUCCESS":
+      localStorage.setItem("profile", JSON.stringify({...action?.data}));
       return { ...state, authData: action.data, loading: false, error: null };
     case "AUTH_FAIL":
       return { ...state, loading: false, error: action.error };
     case "UPDATING_START":
       return { ...state, updateLoading: true, error: null };
     case "UPDATING_SUCCESS":
+      localStorage.setItem("profile", JSON.stringify({...action?.data}));
       return { ...state, authData: action.data, updateLoading: false, error: null };
     case "UPDATING_FAIL":
       return { ...state, updateLoading: false, error: action.error };

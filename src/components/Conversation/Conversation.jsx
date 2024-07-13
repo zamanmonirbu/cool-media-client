@@ -26,8 +26,6 @@ const Conversation = ({ data, currentUser, online }) => {
     getUserData();
   }, [currentUser,data.members,dispatch])
 
-  // console.log("Data",data,"Current", currentUser,"Online OR Not", online)
-
   return (
     <>
       <div className="follower conversation">

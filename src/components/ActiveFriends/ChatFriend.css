@@ -1,4 +1,4 @@
-.Chat {
+/* .Chat {
     position: relative;
     display: grid;
     grid-template-columns: 20rem;
@@ -48,17 +48,17 @@
     position: relative;
   }
   
-  .online-dot {
+  .online-dot-display {
     background-color: greenyellow;
     border-radius: 50%;
     position: absolute;
-    left: 2rem;
-    width: 1rem;
-    height: 1rem;
+    left: .9rem;
+    width: .5rem;
+    height: .5rem;
   }
   
   
-  .chatbox-empty-message {
+   .chatbox-empty-message {
     display: flex;
     align-self: center;
     justify-content: center;
@@ -73,4 +73,15 @@
      .follower.conversation>div>.name{
       display: none;
      }
+  }  */
+
+  .online-dot-display {
+    background-color: greenyellow;
+    border-radius: 50%;
+    position: absolute;
+    left: .9rem;
+    width: .5rem;
+    height: .5rem;
   }
+  
+  

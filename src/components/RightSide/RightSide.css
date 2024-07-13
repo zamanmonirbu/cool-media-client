@@ -1,7 +1,9 @@
 .RightSide{
+    margin-top: 2rem;
+    margin-left: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: .1rem;
 }
 
 .RightSide b{
@@ -33,4 +35,5 @@
     height:3rem;
     width: 80%;
     align-self: center;
+    margin-top: 50%;
 }

@@ -38,7 +38,7 @@ const Chat = () => {
 
   // Connect to Socket.io
   useEffect(() => {
-    socket.current = io("https://cool-media-socket.onrender.com");
+    socket.current = io("http://localhost:8800");
     socket.current.emit("new-user-add", user._id);
     socket.current.on("get-users", (users) => {
       setOnlineUsers(users);
@@ -72,6 +72,8 @@ const Chat = () => {
     const online = onlineUsers.find((user) => user.userId === chatMember);
     return online ? true : false;
   };
+
+  // console.log(checkOnlineStatus)
 
   return (
     <div className="Chat">

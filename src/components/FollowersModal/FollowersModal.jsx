@@ -13,7 +13,7 @@ const FollowersModal = ({ modalOpened, setModalOpened }) => {
       }
       overlayOpacity={0.55}
       overlayBlur={3}
-      size="55%"
+      size="50%"
       opened={modalOpened}
       onClose={() => setModalOpened(false)}
     >

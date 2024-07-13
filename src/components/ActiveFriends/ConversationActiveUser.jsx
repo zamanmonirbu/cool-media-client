@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getUser } from "../../api/UserRequests";
+import { Link } from "react-router-dom";
+import './ChatFriend.css'
 const ConversationActiveUser = ({ data, currentUser, online }) => {
 
   const [userData, setUserData] = useState(null)
@@ -26,7 +28,6 @@ const ConversationActiveUser = ({ data, currentUser, online }) => {
     getUserData();
   }, [currentUser,data.members,dispatch])
 
-  // console.log("Data",data,"Current", currentUser,"Online OR Not", online)
 
   return (
     <>
@@ -35,7 +36,7 @@ const ConversationActiveUser = ({ data, currentUser, online }) => {
       (  <>
       <div className="follower conversation">
         <div>
-          {online && <div className="online-dot"></div>}
+          {online && <div className="online-dot-display"></div>}
          
           <img
             src={userData?.profilePicture?userData.profilePicture 
@@ -44,16 +45,15 @@ const ConversationActiveUser = ({ data, currentUser, online }) => {
             }
             alt="Profile"
             className="followerImage"
-            style={{ width: "50px", height: "50px" }}
+            style={{ width: "20px", height: "20px" }}
           />
           <div className="name" style={{fontSize: '0.8rem'}}>
-            <span>{userData?.firstname} {userData?.lastname}</span>
-            <span style={{color: online?"#51e200":""}}>{online? "Online" : "Offline"}</span>
+            <Link to={`/chat`}>{userData?.firstname} {userData?.lastname}</Link>
           </div>
          
         </div>
       </div>
-      <hr style={{ width: "85%", border: "0.1px solid #ececec" }} /> </>):("")
+       </>):("")
        }
     </>
   );

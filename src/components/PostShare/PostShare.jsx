@@ -7,7 +7,7 @@ import axios from 'axios';
 import Location from "../Location/Location";
 import StyledCalendar from "../TimeShare/TimeShare";
 
-const PostShare = () => {
+const   PostShare = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.authReducer.authData);
   const loading = useSelector((state) => state.postReducer.uploading);

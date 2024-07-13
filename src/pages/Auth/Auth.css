@@ -13,11 +13,9 @@
   justify-content: center;
 }
 
-
-
-/* left side */
-.a-left{
-    gap: 2rem;
+/* Left side */
+.a-left {
+  gap: 2rem;
 }
 
 .a-left > img {
@@ -26,41 +24,81 @@
 }
 
 .Webname > h1 {
-    font-size: 3rem;
-    background-color: red;
-  
-    /* Create the gradient. */
-    background-image: var(--buttonBg);
-    
-    /* Set the background size and repeat properties. */
-    background-size: 100%;
-    background-repeat: repeat;
-  
-    /* Use the text as a mask for the background. */
-    /* This will show the gradient as a text color rather than element bg. */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; 
-    -moz-background-clip: text;
-    -moz-text-fill-color: transparent;
+  font-size: 3rem;
+  background-color: red; /* Replace with your desired gradient */
+  background-image: var(--buttonBg); /* Replace with your gradient */
+  background-size: 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
 }
 
-.Webname>h6{
-    font-size: 0.85rem;
+.Webname > h6 {
+  font-size: 0.85rem;
 }
 
-
-
-/* right side */
-
-
-.authForm{
-    background-color: var(--cardColor);
-    border-radius: 1rem;
-    padding: 1rem;
+/* Right side */
+.authForm {
+  background-color: var(--cardColor);
+  border-radius: 1rem;
+  padding: 1rem;
 }
 
-.authForm>div{
-    width: 100%;
-    align-items: center;
-    justify-content: center;
+.authForm > div {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .Auth {
+    gap: 3rem; /* Adjust gap between sections for larger screens */
+  }
+}
+
+@media (max-width: 992px) {
+  .Auth {
+    flex-direction: column; /* Stack items vertically for tablets */
+    gap: 2rem;
+    height: auto; /* Remove fixed height to allow content to expand */
+  }
+
+  .Auth > div {
+    margin-bottom: 2rem; /* Add space between sections on smaller screens */
+  }
+
+  .a-left > img {
+    width: 3rem; /* Adjust image size for tablets */
+    height: 3rem;
+  }
+
+  .Webname > h1 {
+    font-size: 2.5rem; /* Adjust title font size for tablets */
+  }
+
+  .Webname > h6 {
+    font-size: 0.75rem; /* Adjust subtitle font size for tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .Auth {
+    gap: 1.5rem; /* Adjust gap between sections for mobile devices */
+  }
+
+  .a-left > img {
+    width: 2.5rem; /* Adjust image size for mobile devices */
+    height: 2.5rem;
+  }
+
+  .Webname > h1 {
+    font-size: 2rem; /* Adjust title font size for mobile devices */
+  }
+
+  .Webname > h6 {
+    font-size: 0.65rem; /* Adjust subtitle font size for mobile devices */
+  }
 }

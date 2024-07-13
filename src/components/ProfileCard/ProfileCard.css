@@ -24,6 +24,7 @@
   max-height: 10rem;
   border-radius: 60%;
 }
+
 .ProfileImages > img:nth-of-type(2) {
   width: 6rem;
   height: 6rem;
@@ -75,6 +76,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .follow > span:nth-of-type(1) {
   font-weight: bold;
 }
@@ -89,14 +91,49 @@
   border-left: 2px solid var(--hrColor);
 }
 
+.ProfileCard > span {
+  font-weight: bold;
+  color: orange;
+  align-self: center;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
 
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .ProfileImages > img:nth-of-type(2) {
+    width: 5rem; /* Adjust profile image size for medium screens */
+    height: 5rem;
+    bottom: -2.5rem;
+  }
+}
 
+@media (max-width: 992px) {
+  .ProfileImages > img:nth-of-type(2) {
+    width: 4rem; /* Adjust profile image size for smaller screens */
+    height: 4rem;
+    bottom: -2rem;
+  }
+}
 
-.ProfileCard>span
-{
-    font-weight: bold;
-    color: orange;
-    align-self: center;
-    margin-bottom: 1rem;
-    cursor: pointer;
+@media (max-width: 768px) {
+  .ProfileCard {
+    gap: 0.5rem; /* Adjust gap between sections for tablets */
+  }
+
+  .ProfileImages > img:nth-of-type(2) {
+    width: 3rem; /* Adjust profile image size for tablets */
+    height: 3rem;
+    bottom: -1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .ProfileCard {
+    gap: 0.3rem; /* Adjust gap between sections for mobile devices */
+  }
+
+  .ProfileImages > img:nth-of-type(2) {
+    display: none; /* Hide smaller profile image for mobile devices */
+  }
 }

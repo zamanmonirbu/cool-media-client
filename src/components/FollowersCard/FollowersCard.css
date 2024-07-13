@@ -1,5 +1,4 @@
-
-.FollowersCard{
+.FollowersCard {
     width: 100%;
     border-radius: 0.7rem;
     gap: 1rem;
@@ -8,54 +7,150 @@
     font-size: 13px;
     /* max-height: 10rem; */
 }
-.follower{
+
+.follower {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.follower>div{
+.follower > div {
     display: flex;
     gap: 10px;
 }
 
-
-.followerImage{
+.followerImage {
     width: 3.2rem;
     height: 3.2rem;
     border-radius: 50%;
 }
 
-.name{
+.name {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
 }
 
-.name>span:nth-of-type(1){
+.name > span:nth-of-type(1) {
     font-weight: bold;
 }
 
-
-
-.fc-button{
+.fc-button {
     height: 2rem;
     padding-left: 20px;
     padding-right: 20px;
 }
 
-.UnfollowButton{
+.UnfollowButton {
     color: #4A4EB7;
     border: 2px solid #4A4EB7;
     cursor: pointer;
     background: transparent;
 }
 
-
-.FollowersCard>span{
+.FollowersCard > span {
     font-weight: bold;
     color: #4A4EB7;
     align-self: center;
     cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .followerImage {
+        width: 2.8rem;
+        height: 2.8rem;
+    }
+
+    .fc-button {
+        height: 1.8rem;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+@media (max-width: 992px) {
+    .follower {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .follower > div {
+        gap: 8px;
+    }
+
+    .followerImage {
+        width: 2.4rem;
+        height: 2.4rem;
+    }
+
+    .fc-button {
+        height: 1.6rem;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .followerImage {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .fc-button {
+        height: 1.4rem;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .name > span:nth-of-type(1) {
+        font-size: 12px;
+    }
+
+    .name > span:nth-of-type(2) {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 576px) {
+    .followerImage {
+        width: 1.6rem;
+        height: 1.6rem;
+    }
+
+    .fc-button {
+        height: 1.2rem;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .name > span:nth-of-type(1) {
+        font-size: 11px;
+    }
+
+    .name > span:nth-of-type(2) {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .followerImage {
+        width: 1.4rem;
+        height: 1.4rem;
+    }
+
+    .fc-button {
+        height: 1rem;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+    .name > span:nth-of-type(1) {
+        font-size: 10px;
+    }
+
+    .name > span:nth-of-type(2) {
+        font-size: 9px;
+    }
 }

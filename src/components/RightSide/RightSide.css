@@ -1,39 +1,83 @@
-.RightSide{
+.RightSide {
     margin-top: 2rem;
     margin-left: 2rem;
     display: flex;
     flex-direction: column;
-    gap: .1rem;
-}
-
-.RightSide b{
+    gap: 0.1rem;
+  }
+  
+  .RightSide b {
     text-align: center;
     margin-top: 2rem;
-}
-
-.navIcons{
+  }
+  
+  .navIcons {
     margin-top: 1rem;
     display: flex;
     justify-content: space-between;
-}
-
-.navIcons>a>img{
+  }
+  
+  .navIcons > a > img,
+  .navIcons > img {
     width: 1.5rem;
     height: 1.5rem;
-}
-
-.navIcons>img{
-    width: 1.5rem;
-    height: 1.5rem;
-}
-
-.navIcons>img:hover{
+  }
+  
+  .navIcons > img:hover {
     cursor: pointer;
-}
-
-.r-button{
-    height:3rem;
+  }
+  
+  .r-button {
+    height: 3rem;
     width: 80%;
     align-self: center;
     margin-top: 50%;
-}
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1200px) {
+    .RightSide {
+      margin-left: 1rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .RightSide {
+      margin-left: 0.5rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .RightSide {
+      margin-left: 0;
+      gap: 0.5rem; /* Adjust gap between elements for tablets */
+    }
+  
+    .navIcons > a > img,
+    .navIcons > img {
+      width: 1.2rem; /* Adjust icon size for tablets */
+      height: 1.2rem;
+    }
+  
+    .r-button {
+      height: 2.5rem; /* Adjust button height for tablets */
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .RightSide {
+      gap: 0.3rem; /* Adjust gap between elements for mobile devices */
+    }
+  
+    .navIcons > a > img,
+    .navIcons > img {
+      width: 1rem; /* Adjust icon size for mobile devices */
+      height: 1rem;
+    }
+  
+    .r-button {
+      height: 2rem; /* Adjust button height for mobile devices */
+      width: 90%; /* Adjust button width for mobile devices */
+    }
+  }
+  

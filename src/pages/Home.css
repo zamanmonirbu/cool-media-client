@@ -4,3 +4,15 @@
   grid-template-columns: 18rem auto 20rem;
   gap: 1rem;
 }
+
+@media screen and (max-width: 1200px) {
+  .Home {
+    grid-template-columns: 15rem auto 15rem; /* Adjust column widths for medium-sized screens */
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .Home {
+    grid-template-columns: auto; /* Switch to a single column layout for smaller screens */
+  }
+}

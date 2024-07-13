@@ -1,16 +1,51 @@
-/* Add this to your CSS file */
+/* Base Styles */
 .notification-icon {
-    position: relative;
-  }
-  
+  position: relative;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
   .notification-badge {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    padding: 5px 10px;
-    font-size: 12px;
+      padding: 4px 8px;
+      font-size: 11px;
   }
-  
+}
+
+@media (max-width: 992px) {
+  .notification-badge {
+      padding: 3px 7px;
+      font-size: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .notification-badge {
+      padding: 3px 6px;
+      font-size: 9px;
+  }
+}
+
+@media (max-width: 576px) {
+  .notification-badge {
+      padding: 2px 5px;
+      font-size: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .notification-badge {
+      padding: 2px 4px;
+      font-size: 7px;
+  }
+}

@@ -1,8 +1,32 @@
-.PostSide
-{
+.PostSide {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    height: 100vh;
-    overflow: auto;;
+    height: 100vh; /* Ensures it takes full height of the viewport */
+    overflow: auto; /* Enables scrolling when content exceeds viewport height */
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .PostSide {
+        gap: 0.5rem; /* Adjust gap for medium screens */
+    }
+}
+
+@media (max-width: 992px) {
+    .PostSide {
+        gap: 0.3rem; /* Adjust gap for smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .PostSide {
+        gap: 0.2rem; /* Adjust gap for tablets */
+    }
+}
+
+@media (max-width: 576px) {
+    .PostSide {
+        gap: 0.1rem; /* Adjust gap for mobile devices */
+    }
 }

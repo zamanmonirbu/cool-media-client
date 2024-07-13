@@ -1,23 +1,23 @@
 import React from "react";
-import Home from "../../img/home.png";
-import Noti from "../../img/noti.png";
-import Comment from "../../img/comment.png";
-import Settings from "../../img/settings.png";
+import HomeIcon from "../../img/home.png";
+import NotificationIcon from "../../img/noti.png";
+import CommentIcon from "../../img/comment.png";
+import SettingsIcon from "../../img/settings.png";
 import { Link } from "react-router-dom";
-import './NavIcon.css'
+import "./navicons.css"; // Import your CSS file
 
 const NavIcons = () => {
   return (
     <div className="navIcons">
       <Link to="../home">
-        <img src={Home} alt="" />
+        <img src={HomeIcon} alt="Home" />
       </Link>
-      <Link to="../home">
-        <img src={Settings} alt="" />
+      <Link to="../settings">
+        <img src={SettingsIcon} alt="Settings" />
       </Link>
-      <img src={Noti} alt="" />
+      <img src={NotificationIcon} alt="Notifications" />
       <Link to="../chat">
-        <img src={Comment} alt="" />
+        <img src={CommentIcon} alt="Chat" />
       </Link>
     </div>
   );

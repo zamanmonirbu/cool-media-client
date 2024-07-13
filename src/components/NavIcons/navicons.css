@@ -1,11 +1,12 @@
 .navIcons {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end; /* Align icons to the right */
     align-items: center;
     width: 100%;
     padding: 1rem;
     background-color: var(--cardColor); /* Assuming you have defined this variable */
     border-radius: 1rem;
+    margin-right: 2rem; /* Add margin to the right */
   }
   
   .navIcons a {
@@ -27,13 +28,14 @@
   
   @media screen and (max-width: 768px) {
     .navIcons {
-      justify-content: center;
-      gap: 1rem;
+      justify-content: center; /* Center icons on smaller screens */
+      margin-right: 0; /* Remove right margin on smaller screens */
     }
-    
+  
     .navIcons img {
       width: 1.5rem;
       height: 1.5rem;
+      margin: 0.5rem; /* Add spacing between icons */
     }
   }
   

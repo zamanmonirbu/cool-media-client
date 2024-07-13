@@ -1,0 +1,39 @@
+.navIcons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--cardColor); /* Assuming you have defined this variable */
+    border-radius: 1rem;
+  }
+  
+  .navIcons a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .navIcons img {
+    width: 2rem;
+    height: 2rem;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .navIcons img:hover {
+    transform: scale(1.1);
+  }
+  
+  @media screen and (max-width: 768px) {
+    .navIcons {
+      justify-content: center;
+      gap: 1rem;
+    }
+    
+    .navIcons img {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+  

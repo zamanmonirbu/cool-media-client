@@ -75,12 +75,16 @@
 
 /* Responsive Styles */
 @media (max-width: 1200px) {
-    .PostShare {
-        flex-direction: column;
+    /* .PostShare {
+        flex-direction: row;
         align-items: center;
+    } */
+
+    .PostShare{
+        padding-top: 2rem;
     }
     
-    .PostShare>div {
+    .PostShare div {
         width: 100%;
     }
     
@@ -106,10 +110,17 @@
 }
 
 @media (max-width: 768px) {
-    .PostShare>img {
+    /* .postOptions{
+        display: flex;
+        font-display:row;
+    } */
+    /* .PostShare>img {
         width: 2rem;
         height: 2rem;
-    }
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+    } */
     
     .PostShare>div>input {
         font-size: 14px;
@@ -122,6 +133,10 @@
 }
 
 @media (max-width: 576px) {
+    .postOptions{
+        display: flex;
+        font-display:row;
+    }
     .PostShare {
         padding: 0.5rem;
         gap: 0.5rem;
@@ -153,11 +168,14 @@
         padding: 5px;
     }
     
-    .postOptions {
+    /* .postOptions {
         flex-direction: column;
         gap: 5px;
+    } */
+     .postOptions{
+        display: flex;
+        font-display:row;
     }
-    
     .option {
         font-size: 10px;
         padding: 3px 7px;

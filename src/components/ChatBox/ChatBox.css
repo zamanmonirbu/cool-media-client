@@ -1,4 +1,6 @@
 .ChatBox-container {
+    margin-top: 3rem;
+    padding-top: 1  rem; 
     background: var(--cardColor);
     border-radius: 1rem;
     display: grid;
@@ -137,6 +139,7 @@
 
     .chat-sender {
         height: 2.5rem;
+        margin-bottom: 2rem;
     }
 
     .chat-sender > input {

@@ -7,6 +7,7 @@ import "./Chat.css";
 import { userChats } from "../../api/ChatRequests";
 import { useSelector } from "react-redux";
 import { io } from "socket.io-client";
+import NewMessage from "../../components/NewMessage/NewMessage";
 
 const Chat = () => {
   const socket = useRef();
@@ -16,7 +17,6 @@ const Chat = () => {
   const [currentChat, setCurrentChat] = useState(null);
   const [sendMessage, setSendMessage] = useState(null);
   const [receivedMessage, setReceivedMessage] = useState(null);
-
 
   useEffect(() => {
     let isMounted = true;
@@ -36,9 +36,8 @@ const Chat = () => {
     };
   }, [user._id]);
 
-  // Connect to Socket.io
   useEffect(() => {
-    socket.current = io("http://localhost:8800");
+    socket.current = io("https://cool-media-socket.onrender.com");
     socket.current.emit("new-user-add", user._id);
     socket.current.on("get-users", (users) => {
       setOnlineUsers(users);
@@ -73,13 +72,18 @@ const Chat = () => {
     return online ? true : false;
   };
 
-  // console.log(checkOnlineStatus)
+  const handleNewChat = (newChat) => {
+    setChats(prevChats => [...prevChats, newChat]);
+  };
 
   return (
     <div className="Chat">
       <div className="Left-side-chat">
         <LogoSearch />
         <div className="Chat-container">
+          <div className="newChat">
+            <NewMessage onNewChat={handleNewChat} />
+          </div>
           <h2>Chats</h2>
           <div className="Chat-list">
             {chats.map((chat) => (

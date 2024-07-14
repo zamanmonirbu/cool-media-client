@@ -3,6 +3,7 @@ import Logo from '../../img/logo.png';
 import './LogoSearch.css';
 import { UilSearch } from '@iconscout/react-unicons';
 import { API } from '../../api/UserRequests';
+import { Link } from 'react-router-dom';
 
 const LogoSearch = () => {
   const [query, setQuery] = useState('');
@@ -31,7 +32,9 @@ const LogoSearch = () => {
 
   return (
     <div className="LogoSearch">
-      <img src={Logo} alt="Logo" className="logoImg" />
+      <Link to={'/home'}> 
+        <img src={Logo} alt="Logo" className="logoImg" />
+      </Link>
       <div className="Search">
         <input
           type="text"
@@ -48,8 +51,8 @@ const LogoSearch = () => {
           <div className="SearchResults">
             {results.map((user) => (
               <div key={user._id} className="SearchResultItem">
-                <img src={user.profilePicture} alt="profile" className="SearchResultImg" />
-                <span>{user.firstname} {user.lastname}</span>
+                <Link to={`/profile/${user._id}`}><img src={user.profilePicture} alt="profile" className="SearchResultImg" />
+                <span>{user.firstname} {user.lastname}</span></Link>
               </div>
             ))}
           </div>

@@ -1,41 +1,48 @@
-.LogoSearch {
+.LogoSearchChat {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 0.75rem;
-  
 }
 
-.logoImg {
-  height: 2rem;
-  width: 2rem;
-}
 
-.Search {
+
+.Search-chat {
   display: flex;
   align-items: center;
   background-color: var(--inputColor);
   border: 1px solid #ccc;
   border-radius: 20px;
-  padding: 5px 10px;
-  margin-left: 10px;
+  padding: 5px 3px;
 }
 
-.Search input {
+.Search-chat input {
   background-color: transparent;
   border: none;
   outline: none;
   padding: 5px;
 }
 
-.s-icon {
+.s-icon-plus {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(#a1d3e3, #492cf2);
   border-radius: 5px;
-  padding: 4px;
   color: white;
+  background-color: rgb(181, 181, 185);
   cursor: pointer;
+  padding: 5px; 
+  margin-right: 5px;
+}
+
+.ErrorMessage {
+  color: red;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.s-icon-plus > img {
+  height: 1rem;
+  width: 1rem;
 }
 
 .SearchResults {
@@ -46,7 +53,7 @@
   width: 10%;
   max-height: 200px;
   overflow-y: auto;
-  margin: 8rem 1rem 1rem 4rem;
+  margin: 1rem 0 0 0;
   z-index: 1;
 }
 
@@ -63,7 +70,7 @@
 
 .SearchResultImg {
   height: 1rem;
-    width: 1rem;
+  width: 1rem;
   border-radius: 50%;
   margin-right: 10px;
 }
@@ -106,12 +113,8 @@
 }
 
 @media (max-width: 576px) {
-  /* .LogoSearch{
-    margin-top: 5rem;
-  } */
   .SearchResults {
     width: 30%;
-    margin: 6rem 1rem 1rem 2rem;
   }
 
   .SearchResultItem {
@@ -123,19 +126,23 @@
     width: 25px;
   }
 
-  .Search {
+  .Search-chat {
     padding: 4px 8px;
   }
 
-  .Search input {
-    padding: 4px;
+  .Search-chat input {
+    width: 100%;
+  }
+  .Search-chat img{
+    height: .4rem;
+    width: .4rem;
+    margin-right: 0;
   }
 }
 
 @media (max-width: 480px) {
   .SearchResults {
     width: 35%;
-    margin: 5rem 0.5rem 1rem 1rem;
   }
 
   .SearchResultItem {
@@ -147,11 +154,11 @@
     width: 1rem;
   }
 
-  .Search {
+  .Search-chat {
     padding: 3px 6px;
   }
 
-  .Search input {
+  .Search-chat input {
     padding: 3px;
   }
 }

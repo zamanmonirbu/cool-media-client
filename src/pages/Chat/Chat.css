@@ -6,9 +6,20 @@
 }
 
 .Left-side-chat {
+  /* margin-top: 5rem; */
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.newChat{
+  display: flex;  
+  align-items: space-between;
+  justify-content: center;
+}
+.newChat>img{
+  height: 2rem;
+  width: 2rem;
 }
 
 .Chat-container {
@@ -70,7 +81,9 @@
 
 @media screen and (max-width: 768px) {
   .Chat {
-    grid-template-columns: 16% auto;
+     
+
+    grid-template-columns: 22% auto;
   }
   
   .conversation > div > .name {

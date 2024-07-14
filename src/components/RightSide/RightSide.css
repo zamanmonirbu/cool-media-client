@@ -1,6 +1,6 @@
 .RightSide {
-    margin-top: 2rem;
-    margin-left: 2rem;
+    /* margin-top: 5rem; */
+    /* margin-left: 2rem; */
     display: flex;
     flex-direction: column;
     gap: 0.1rem;
@@ -31,9 +31,14 @@
     height: 3rem;
     width: 80%;
     align-self: center;
-    margin-top: 50%;
+    /* margin-top: 50%; */
   }
   
+  .makeSureActive{
+    margin-top: 4rem;
+    margin-left: 2rem;  
+  }
+
   /* Responsive Styles */
   @media (max-width: 1200px) {
     .RightSide {
@@ -48,6 +53,9 @@
   }
   
   @media (max-width: 768px) {
+    .makeSureActive{
+      display: none ;
+    }
     .RightSide {
       margin-left: 0;
       gap: 0.5rem; /* Adjust gap between elements for tablets */
@@ -65,6 +73,11 @@
   }
   
   @media (max-width: 576px) {
+
+    .navIcons {
+      margin-top: 3.5rem;
+    
+    }
     .RightSide {
       gap: 0.3rem; /* Adjust gap between elements for mobile devices */
     }
@@ -73,6 +86,7 @@
     .navIcons > img {
       width: 1rem; /* Adjust icon size for mobile devices */
       height: 1rem;
+      margin-right: 2rem;
     }
   
     .r-button {

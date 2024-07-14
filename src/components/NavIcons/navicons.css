@@ -1,41 +1,48 @@
 .navIcons {
-    display: flex;
-    justify-content: flex-end; /* Align icons to the right */
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  padding: 1rem;
+  background-color: var(--cardColor);
+  border-radius: 1rem;
+  margin-right: 2rem;
+}
+
+.navIcons a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navIcons img {
+  width: 2rem;
+  height: 2rem;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.navIcons img:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 768px) {
+  .navIcons {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     width: 100%;
-    padding: 1rem;
-    background-color: var(--cardColor); /* Assuming you have defined this variable */
-    border-radius: 1rem;
-    margin-right: 2rem; /* Add margin to the right */
+    justify-content: space-around;
+    margin-right: 0;
+    padding: 0.5rem;
+    background-color: var(--cardColor);
+    border-radius: 0;
   }
-  
-  .navIcons a {
-    text-decoration: none;
-    color: inherit;
-  }
-  
+
   .navIcons img {
-    width: 2rem;
-    height: 2rem;
-    object-fit: cover;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0.5rem;
   }
-  
-  .navIcons img:hover {
-    transform: scale(1.1);
-  }
-  
-  @media screen and (max-width: 768px) {
-    .navIcons {
-      justify-content: center; /* Center icons on smaller screens */
-      margin-right: 0; /* Remove right margin on smaller screens */
-    }
-  
-    .navIcons img {
-      width: 1.5rem;
-      height: 1.5rem;
-      margin: 0.5rem; /* Add spacing between icons */
-    }
-  }
-  
+}

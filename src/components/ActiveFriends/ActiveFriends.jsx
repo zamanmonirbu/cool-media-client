@@ -53,12 +53,12 @@ const ActiveFriend = () => {
 
   // Get the message from socket server
   useEffect(() => {
-    socket.current.on("recieve-message", (data) => {
+    socket.current.on("receive-message", (data) => {
       setReceivedMessage(data);
     });
 
     return () => {
-      socket.current.off("recieve-message");
+      socket.current.off("receive-message");
     };
   }, []);
 
@@ -70,20 +70,24 @@ const ActiveFriend = () => {
 
   return (
     <>
-      {chats.map((chat) => (
-        <div
-          key={chat._id}
-          onClick={() => {
-            setCurrentChat(chat);
-          }}
-        >
-          <ConversationActiveUser
-            data={chat}
-            currentUser={user._id}
-            online={checkOnlineStatus(chat)}
-          />
-        </div>
-      ))}
+      {onlineUsers.length > 1 ? (
+        chats.map((chat) => (
+          <div
+            key={chat._id}
+            onClick={() => {
+              setCurrentChat(chat);
+            }}
+          >
+            <ConversationActiveUser
+              data={chat}
+              currentUser={user._id}
+              online={checkOnlineStatus(chat)}
+            />
+          </div>
+        ))
+      ) : (
+        <p>No user is Online now</p>
+      )}
     </>
   );
 };

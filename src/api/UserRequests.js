@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const API = axios.create({ baseURL: 'https://cool-media-backend.onrender.com' });
+export const API = axios.create({ baseURL: 'http://cool-media-backend.onrender.com' });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {
@@ -14,7 +14,7 @@ API.interceptors.request.use((req) => {
 export const searchUsers = async (query) => {
   try {
     const res = await API.get(`/user/search?query=${query}`);
-    console.log("My data",res.data)
+    // console.log("My data",res.data)
     return res.data;
   } catch (err) {
     console.error(err);

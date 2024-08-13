@@ -11,17 +11,17 @@ const ProfileCard = ({location,id}) => {
   useEffect(() => {
     const getUserData = async () => {
       try {
-        const { data } = await getUser(id);
-        setUserData(data);
+        const res = await getUser(id);
+        setUserData(res.data);
       } catch (error) {
-        console.log(error);
+        console.log(error.message);
       }
     };
 
   getUserData();
   }, [id]);
 
-  // console.log(userData)
+
 
   return (
     <div className="ProfileCard">

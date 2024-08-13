@@ -22,6 +22,7 @@ const Post = ({ data }) => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [editedDesc, setEditedDesc] = useState(data.desc);
 
+  // console.log(data.userId);
   useEffect(() => {
     let isMounted = true; 
     const fetchUser = async () => {

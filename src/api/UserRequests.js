@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const API = axios.create({ baseURL: 'http://cool-media-backend.onrender.com' });
+export const API = axios.create({ baseURL: 'https://cool-media-backend.onrender.com' });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {

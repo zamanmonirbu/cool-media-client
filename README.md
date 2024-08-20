@@ -1,3 +1,4 @@
+```markdown
 # Cool Media: A Social Media Web Application
 
 [Live Link](https://cool-media-client.vercel.app) | [Front-end Code](https://github.com/zamanmonirbu/cool-media-client) | [Back-end Code](https://github.com/zamanmonirbu/cool-media-backend) | [Socket Code](https://github.com/zamanmonirbu/cool-media-socket) | [Demo Video](https://youtu.be/BMk6zPf6T8U)
@@ -28,24 +29,73 @@ Cool Media is a comprehensive social media web application designed to connect p
 - **User Status:** The messaging system shows active and inactive statuses, helping users identify who is available for chat.
 - **Message History:** Users can view their message history to keep track of their conversations.
 
-## Tech Stack
-- **Front-end:** React JS
-  - Utilizes modern React features like hooks and context for state management.
-  - Responsive design for optimal viewing on various devices.
-  - Component-based architecture for modular and reusable code.
-  
-- **Back-end:** Express JS
-  - RESTful API design for efficient client-server communication.
-  - Middleware for handling authentication, authorization, and error management.
-  - Scalable architecture to handle a growing number of users and interactions.
+### Explore and Discover
+- **Explore Page:** Discover new users and trending posts through the explore page, which highlights popular content.
+- **Search Functionality:** Users can search for other users or specific posts using the search bar, making it easy to find relevant content.
 
-- **Database:** MongoDB
-  - NoSQL database for flexible and scalable data storage.
-  - Schema design optimized for social media functionalities like posts, comments, and user relationships.
-  - Efficient querying for fast data retrieval and updates.
+### Responsive Design
+- **Mobile Friendly:** The application is fully responsive, providing an optimized experience across all devices, including desktops, tablets, and smartphones.
 
-## Installation and Setup
-1. **Clone the repository:**
+## Technologies Used
+
+### Front-End
+- **React:** JavaScript library for building user interfaces.
+- **Redux:** State management for predictable state management.
+- **Socket.IO:** For real-time, bi-directional communication between web clients and servers.
+
+### Back-End
+- **Node.js:** 
+- **Express.js:** 
+- **MongoDB:** 
+- **Mongoose:** 
+
+### Deployment
+- **Vercel:** For deploying the front-end.
+- **Render:** For deploying the back-end services.
+- **MongoDB Atlas:** For Database.
+
+## Installation
+
+1. **Clone the repositories:**
    ```bash
-   git clone <repository-url>
-   cd cool-media
+   git clone https://github.com/zamanmonirbu/cool-media-client.git
+   git clone https://github.com/zamanmonirbu/cool-media-backend.git
+   git clone https://github.com/zamanmonirbu/cool-media-socket.git
+   ```
+
+2. **Navigate to each directory and install dependencies:**
+   ```bash
+   cd cool-media-client
+   npm install
+
+   cd ../cool-media-backend
+   npm install
+
+   cd ../cool-media-socket
+   npm install
+   ```
+
+3. **Environment Variables:** Set up your `.env` files for the client and server with the required environment variables as per the `.env.example` files.
+
+4. **Run the applications:**
+   - Start the back-end server:
+     ```bash
+     cd cool-media-backend
+     npm start
+     ```
+   - Start the Socket.IO server:
+     ```bash
+     cd cool-media-socket
+     npm start
+     ```
+   - Start the front-end:
+     ```bash
+     cd cool-media-client
+     npm start
+     ```
+
+## Contributing
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+This README provides a comprehensive guide to the Cool Media project, covering all the key features, technologies, installation steps, and contribution guidelines.

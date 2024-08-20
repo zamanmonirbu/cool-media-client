@@ -1,6 +1,6 @@
 # Cool Media: A Social Media Web Application
 
-[Live Link](#) | [Front-end Code](#) | [Back-end Code](#) | [Demo Video](#)
+[Live Link](https://cool-media-client.vercel.app) | [Front-end Code](https://github.com/zamanmonirbu/cool-media-client) | [Back-end Code](https://github.com/zamanmonirbu/cool-media-backend) | [Socket Code](https://github.com/zamanmonirbu/cool-media-socket) | [Demo Video](https://youtu.be/BMk6zPf6T8U)
 
 ## Overview
 Cool Media is a comprehensive social media web application designed to connect people and facilitate interactions through posts, comments, messages, and more. This project leverages modern web technologies to provide a seamless and engaging user experience.

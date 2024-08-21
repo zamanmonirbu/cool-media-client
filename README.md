@@ -5,6 +5,15 @@
 ## Overview
 Cool Media is a comprehensive social media web application designed to connect people and facilitate interactions through posts, comments, messages, and more. This project leverages modern web technologies to provide a seamless and engaging user experience.
 
+## Login Credentials
+
+ - **Username:** monir
+ - **Password:** 123
+
+ - **Username:** saidur
+ - **Password:** 1234
+
+
 ## Features
 
 ### Awesome Post Feed
